@@ -1,25 +1,43 @@
 //Variáveis
-const html = document.querySelector('html')
-const botao_foco = document.querySelector('.app__card-button--foco')
-const botao_curto = document.querySelector('.app__card-button--curto')
-const botao_longo = document.querySelector('.app__card-button--longo')
-const imagens = document.querySelector('.app__image')
-const altera_frases = document.querySelector('.app__title')
+const html = document.querySelector('html');
+const botao_foco = document.querySelector('.app__card-button--foco');
+const botao_curto = document.querySelector('.app__card-button--curto');
+const botao_longo = document.querySelector('.app__card-button--longo');
+const imagens = document.querySelector('.app__image');
+const altera_frases = document.querySelector('.app__title');
+const botoes = document.querySelectorAll('.app__card-button');
+const musicaFocoInput = document.querySelector('#alternar-musica');
+const musica = new Audio('sons/luna-rise-part-one.mp3');
+musica.loop = true;
+
+musicaFocoInput.addEventListener('change', () => {
+    if(musica.paused) {
+            musica.play()
+        } else {
+            musica.pause()
+        }
+})
 
 //Funções ao clicar nos botões
 botao_foco.addEventListener('click', () =>{
-    alterarContexto('foco')
+    alterarContexto('foco');
+    botao_foco.classList.add('active');
 })
 
 botao_curto.addEventListener('click', () =>{
-    alterarContexto('descanso-curto')
+    alterarContexto('descanso-curto');
+    botao_curto.classList.add('active');
 })
 
 botao_longo.addEventListener('click', () =>{
-    alterarContexto('descanso-longo')
+    alterarContexto('descanso-longo');
+    botao_longo.classList.add('active');
 })
 
 function alterarContexto(contexto){
+    botoes.forEach(function(contexto){
+        contexto.classList.remove('active');
+    })
     html.setAttribute('data-contexto', contexto);
     imagens.setAttribute('src', `/imagens/${contexto}.png`);
     switch(contexto){
