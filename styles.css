@@ -27,6 +27,18 @@
     max-width: 100%;
 }
 
+.principal{
+    text-align: center;
+    font-size: 25px;
+    padding: 1em 0;
+    color: var(--color-secondary);
+}
+
+.principal_strong{
+    font-size: 29px;
+    color: var(--all-black);
+}
+
 html {
     background: var(--main-bg-color);
     min-height: 100vh;
